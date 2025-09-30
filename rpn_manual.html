@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>rpn_manual.nim</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🐳</text></svg>">
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="nimib 0.3.12" name="generator">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/pietroppeter/nimib/assets/atom-one-light.css'>
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+  <style>
+.nb-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nb-small {
+  font-size: 0.8rem;
+}
+button.nb-small {
+  float: right;
+  padding: 2px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+section#source {
+  display:none
+}
+pre > code {
+  font-size: 1.2em;
+}
+.nb-output {
+  line-height: 1.15;
+}
+figure {
+  margin: 2rem 0;
+}
+figcaption {
+  text-align: center;
+}
+  
+</style>
+  
+</head>
+<body>
+<header>
+<div class="nb-box">
+  <span><a href=".">🏡</a></span>
+  <span><code>rpn_manual.nim</code></span>
+  <span><a href="https://github.com/lucas20241021-sys/rpn-calc-project"><svg aria-hidden="true" width="1.2em" height="1.2em" style="vertical-align: middle;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59c.4.07.55-.17.55-.38c0-.19-.01-.82-.01-1.49c-2.01.37-2.53-.49-2.69-.94c-.09-.23-.48-.94-.82-1.13c-.28-.15-.68-.52-.01-.53c.63-.01 1.08.58 1.23.82c.72 1.21 1.87.87 2.33.66c.07-.52.28-.87.51-1.07c-1.78-.2-3.64-.89-3.64-3.95c0-.87.31-1.59.82-2.15c-.08-.2-.36-1.02.08-2.12c0 0 .67-.21 2.2.82c.64-.18 1.32-.27 2-.27c.68 0 1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82c.44 1.1.16 1.92.08 2.12c.51.56.82 1.27.82 2.15c0 3.07-1.87 3.75-3.65 3.95c.29.25.54.73.54 1.48c0 1.07-.01 1.93-.01 2.2c0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" fill="#000"></path></svg></a></span>
+</div>
+<hr>
+</header><main>
+<h1>RPN 计算器使用说明书</h1>
+<ol>
+<li>安装和编译指南</li>
+</ol>
+<hr />
+<p>在终端中编译并运行本程序：
+g++ -std=c++17 -O2 rpn_calc.cpp -o rpn_calc
+./rpn_calc</p>
+<ol start="2">
+<li>基本使用示例</li>
+</ol>
+<hr />
+<blockquote>
+<p>3 4 +
+结果：7</p>
+</blockquote>
+<blockquote>
+<p>5 1 2 + 4 * + 3 -
+结果：14</p>
+</blockquote>
+<ol start="3">
+<li>所有支持的操作说明</li>
+</ol>
+<hr />
+<p>数字输入：</p>
+<ul>
+<li>支持整数与浮点数（例如：42、-3.5、0.125）</li>
+</ul>
+<p>四则运算：</p>
+<ul>
+<li>加法</li>
+</ul>
+<ul>
+<li>减法</li>
+</ul>
+<ul>
+<li>乘法
+/  除法</li>
+</ul>
+<p>高级功能：
+^      幂运算（例如：2 3 ^  → 8）
+sqrt   平方根（例如：9 sqrt → 3）</p>
+<p>栈操作：
+stack  显示当前栈（自顶向下）
+clear  清空栈</p>
+<p>系统命令：
+q / quit / exit  退出程序</p>
+<ol start="4">
+<li>错误代码和异常说明</li>
+</ol>
+<hr />
+<ul>
+<li>操作数不足：执行运算时，栈内元素数量不够</li>
+<li>除零错误：对 0 做除法</li>
+<li>平方根不能是负数：对负数执行 sqrt</li>
+<li>未知符号：输入了无效的运算符或字符串</li>
+<li>表达式无结果：整行表达式执行后栈为空</li>
+</ul>
+<ol start="5">
+<li>示例输入输出</li>
+</ol>
+<hr />
+<blockquote>
+<p>2 3 ^
+结果：8</p>
+</blockquote>
+<blockquote>
+<p>9 sqrt
+结果：3</p>
+</blockquote>
+<blockquote>
+<p>7 0 /
+错误：除零错误</p>
+</blockquote>
+<blockquote>
+<p>5 5 + 3 +
+结果：13</p>
+</blockquote>
+<blockquote>
+<p>stack
+[栈顶] 13 [栈底]</p>
+</blockquote>
+<blockquote>
+<p>clear
+stack
+[栈顶] [栈底]</p>
+</blockquote>
+</main>
+<footer>
+<div class="nb-box">
+  <span><span class="nb-small">made with <a href="https://pietroppeter.github.io/nimib/">nimib 🐳</a></span></span>
+  <span></span>
+  <span><button class="nb-small" id="show" onclick="toggleSourceDisplay()">Show Source</button></span>
+</div>
+</footer>
+<section id="source">
+<pre><code class="nohighlight nim hljs"><span class="hljs-keyword">import</span> nimib
+
+nbInit
+
+nbText: <span class="hljs-string">&quot;# RPN 计算器使用说明书&quot;</span>
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+1. 安装和编译指南
+--------------------------------
+在终端中编译并运行本程序：
+    g++ -std=c++17 -O2 rpn_calc.cpp -o rpn_calc
+    ./rpn_calc
+&quot;&quot;&quot;</span>
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+2. 基本使用示例
+--------------------------------
+&gt; 3 4 +
+结果：7
+
+&gt; 5 1 2 + 4 * + 3 -
+结果：14
+&quot;&quot;&quot;</span>
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+3. 所有支持的操作说明
+--------------------------------
+数字输入：
+  - 支持整数与浮点数（例如：42、-3.5、0.125）
+
+四则运算：
+  +  加法
+  -  减法
+  *  乘法
+  /  除法
+
+高级功能：
+  ^      幂运算（例如：2 3 ^  → 8）
+  sqrt   平方根（例如：9 sqrt → 3）
+
+栈操作：
+  stack  显示当前栈（自顶向下）
+  clear  清空栈
+
+系统命令：
+  q / quit / exit  退出程序
+&quot;&quot;&quot;</span>
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+4. 错误代码和异常说明
+--------------------------------
+- 操作数不足：执行运算时，栈内元素数量不够
+- 除零错误：对 0 做除法
+- 平方根不能是负数：对负数执行 sqrt
+- 未知符号：输入了无效的运算符或字符串
+- 表达式无结果：整行表达式执行后栈为空
+&quot;&quot;&quot;</span>
+
+nbText: <span class="hljs-string">&quot;&quot;&quot;
+5. 示例输入输出
+--------------------------------
+&gt; 2 3 ^
+结果：8
+
+&gt; 9 sqrt
+结果：3
+
+&gt; 7 0 /
+错误：除零错误
+
+&gt; 5 5 + 3 +
+结果：13
+
+&gt; stack
+[栈顶] 13 [栈底]
+
+&gt; clear
+&gt; stack
+[栈顶] [栈底]
+&quot;&quot;&quot;</span>
+
+nbSave
+
+</code></pre>
+</section><script>
+function toggleSourceDisplay() {
+  var btn = document.getElementById("show")
+  var source = document.getElementById("source");
+  if (btn.innerHTML=="Show Source") {
+    btn.innerHTML = "Hide Source";
+    source.style.display = "block";
+  } else {
+    btn.innerHTML = "Show Source";
+    source.style.display = "none";
+  }
+}
+</script></body>
+</html>
